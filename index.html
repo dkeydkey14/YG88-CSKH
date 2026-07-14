@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>YG88 - Trung Tâm Dịch Vụ Khách Hàng</title>
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preload"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Roboto:wght@800&family=SF+Pro+Display:wght@500;700&display=swap"
+        as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Roboto:wght@800&family=SF+Pro+Display:wght@500;700&display=swap"
+            rel="stylesheet">
+    </noscript>
+    <!-- Slick Slider CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-slider@1.8.1/slick/slick.css" />
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.jsdelivr.net/npm/slick-slider@1.8.1/slick/slick-theme.css" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Thiết lập zoom mặc định 110% cho toàn bộ website */
+        html {
+            zoom: 111%;
+        }
+
+
+        .font-inter {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .font-roboto {
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .font-sf-pro {
+            font-family: 'SF Pro Display', sans-serif;
+        }
+
+        /* Custom gradients and effects */
+        .gradient-blue {
+            background: linear-gradient(135deg, #28c828 0%, #32d74b 100%);
+        }
+
+        .glass-effect {
+            backdrop-filter: blur(2px);
+            background: linear-gradient(180deg, rgba(200, 255, 200, 0.3) 0%, rgba(160, 240, 160, 0.3) 100%);
+        }
+
+        .button-glow {
+            box-shadow: 0px 4px 10px 0px rgba(40, 200, 60, 0.28);
+        }
+
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-2px);
+            box-shadow: 0px 8px 25px 0px rgba(40, 200, 60, 0.35);
+        }
+
+        /* Background Animation Styles cho mockup container */
+        .mockup-background-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            border-radius: 20px;
+        }
+
+        .background-slide {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(1);
+            width: 90%;
+            height: 90%;
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.85;
+            border-radius: 20px;
+            filter: none;
+        }
+
+        /* Animation chính cho background - xoay đều đặn và liên tục */
+        @keyframes backgroundAnimation {
+            0% {
+                transform: translate(-50%, -50%) scale(1) rotate(0deg);
+                opacity: 0.85;
+            }
+
+            12.5% {
+                transform: translate(-50%, -50%) scale(1.05) rotate(45deg);
+                opacity: 0.9;
+            }
+
+            25% {
+                transform: translate(-50%, -50%) scale(1.1) rotate(90deg);
+                opacity: 0.95;
+            }
+
+            37.5% {
+                transform: translate(-50%, -50%) scale(1.05) rotate(135deg);
+                opacity: 0.9;
+            }
+
+            50% {
+                transform: translate(-50%, -50%) scale(0.95) rotate(180deg);
+                opacity: 0.85;
+            }
+
+            62.5% {
+                transform: translate(-50%, -50%) scale(0.9) rotate(225deg);
+                opacity: 0.9;
+            }
+
+            75% {
+                transform: translate(-50%, -50%) scale(0.95) rotate(270deg);
+                opacity: 0.95;
+            }
+
+            87.5% {
+                transform: translate(-50%, -50%) scale(1) rotate(315deg);
+                opacity: 0.9;
+            }
+
+            100% {
+                transform: translate(-50%, -50%) scale(1) rotate(360deg);
+                opacity: 0.85;
+            }
+        }
+
+        .background-slide.active {
+            animation: backgroundAnimation 6s linear infinite;
+        }
+
+        /* Animation xoay liên tục và mượt mà */
+        @keyframes continuousRotation {
+            from {
+                transform: translate(-50%, -50%) scale(1) rotate(0deg);
+            }
+
+            to {
+                transform: translate(-50%, -50%) scale(1) rotate(360deg);
+            }
+        }
+
+        /* Animation zoom nhẹ */
+        @keyframes gentleZoom {
+
+            0%,
+            100% {
+                transform: translate(-50%, -50%) scale(1);
+            }
+
+            50% {
+                transform: translate(-50%, -50%) scale(1.05);
+            }
+        }
+
+        .background-slide.zoom {
+            animation: gentleZoom 4s ease-in-out infinite;
+        }
+
+        /* Animation xoay liên tục */
+        .background-slide.continuous-rotate {
+            animation: continuousRotation 8s linear infinite;
+        }
+
+        /* Animation opacity nhẹ nhàng */
+        @keyframes gentleOpacity {
+
+            0%,
+            100% {
+                opacity: 0.85;
+            }
+
+            50% {
+                opacity: 0.95;
+            }
+        }
+
+        .background-slide.opacity {
+            animation: gentleOpacity 3s ease-in-out infinite;
+        }
+
+        /* Background images không có màu nền */
+        .bg-overlay-1 {
+            background-image: url('./assets/img/feature/backgroupf1.png');
+        }
+
+        /* Tối ưu hóa performance */
+        .background-slide {
+            will-change: transform, opacity;
+        }
+
+        /* Responsive background */
+        @media (max-width: 768px) {
+            .background-slide {
+                background-position: center;
+            }
+        }
+
+        /* Modal styles */
+        .modal-base {
+            transition: all 0.3s ease;
+        }
+
+        .modal-base.hidden {
+            display: none !important;
+            opacity: 0 !important;
+            visibility: hidden !important;
+        }
+
+        .modal-base:not(.hidden) {
+            display: block !important;
+            opacity: 1 !important;
+            visibility: visible !important;
+        }
+
+        /* Desktop modal styles */
+        @media (min-width: 768px) {
+            .modal-base {
+                background: transparent !important;
+                pointer-events: none;
+            }
+
+            .modal-base .fixed {
+                animation: slideInFromBottom 0.3s ease-out;
+                pointer-events: auto;
+            }
+        }
+
+        @keyframes slideInFromBottom {
+            from {
+                transform: translateY(100%);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* Mobile modal styles */
+        @media (max-width: 767px) {
+            .modal-base {
+                display: flex !important;
+                align-items: center;
+                justify-content: center;
+                background: rgba(0, 0, 0, 0.5) !important;
+            }
+
+            .modal-base .md\\:hidden {
+                width: 100% !important;
+                height: 100% !important;
+                max-width: none !important;
+                max-height: none !important;
+                border-radius: 0 !important;
+            }
+
+            .modal-base .flex-1 {
+                height: calc(100vh - 100px) !important;
+            }
+
+            .modal-base iframe {
+                width: 100% !important;
+                height: 100% !important;
+                min-height: 100% !important;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-white min-h-screen overflow-x-hidden">
+    <div class="w-full h-full fixed top-0 left-0 z-0">
+        <img src="./assets/img/backgroud.webp" alt="" class="w-full h-full object-cover">
+    </div>
+    <!-- Header -->
+    <header
+        class="relative z-10 h-[65px] md:h-[87px] border-[0.5px] border-solid border-[rgba(20,80,30,0.08)] bg-gradient-to-b from-[#E8FEE8] to-[#F0FDF0] shadow-[0_1px_0.1px_0_rgba(55,200,80,0.25),0_4px_7.7px_0_rgba(100,220,120,0.13),0_-1px_5.5px_0_rgba(40,200,60,0.18)_inset,0_2px_2.7px_2px_#FFF_inset]">
+        <div class="max-w-7xl mx-auto px-1 h-full flex items-center justify-between mx-auto
+        w-full max-w-[450px] md:max-w-[760px] lg:max-w-[1024px] px-3 md:px-0">
+            <!-- Logo -->
+            <div class="w-[150px] md:w-[220px] h-full bg-cover bg-center hidden md:block">
+                <a href="/" target="_blank">
+                    <img src="assets/logoyg88.png" alt="YG88 Logo" class="w-full h-full object-contain">
+                </a>
+            </div>
+            <div class="w-[135px] h-full bg-cover bg-center block  md:hidden">
+                <a href="/" target="_blank">
+                    <img src="assets/logoyg88.png" alt="YG88 Logo" class="w-full h-full object-contain">
+                </a>
+            </div>
+
+            <!-- Navigation Buttons -->
+            <div class="flex items-center gap-2">
+                <!-- 
+                    Nút Đăng Ký: Khi click sẽ mở tab mới tới /
+                    Đảm bảo mở đúng link, đúng giao diện như hướng dẫn.
+                -->
+                <button onclick="window.open('/', '_blank')"
+                    class="transition-all duration-300 text-[11px] md:text-[14px] w-[70px] h-[25px] sm:w-[85px] sm:h-[30px] md:w-[152px] md:h-[38px]"
+                    style="border-radius: 109px; background: #28C828; box-shadow: -3px -4px 7px 0 rgba(255, 255, 255, 0.15) inset, 0 2px 6px 0 rgba(40, 200, 60, 0.35); color: #FFF; text-align: center; font-weight: 500; line-height: normal; text-transform: capitalize; flex-shrink: 0;">
+                    Đăng Ký
+                </button>
+                <button onclick="window.open('/', '_blank')"
+                    class="transition-all duration-300 sm:w-[100px] text-[11px] md:text-[14px] w-[70px] h-[25px] sm:w-[85px] sm:h-[30px] md:w-[152px] md:h-[38px]"
+                    style="border-radius: 44px; border: 1px solid #28C828; background: radial-gradient(76.16% 76.16% at 31.97% 19.67%, #FFF 0%, rgba(255, 255, 255, 0.00) 69.79%, rgba(255, 255, 255, 0.00) 100%), #F0FDF0; box-shadow: 0 2px 4.7px 0 rgba(40, 200, 60, 0.12), 0 -3px 8px 0 rgba(255, 255, 255, 0.25) inset, 6px 9px 9px 0 rgba(255, 255, 255, 0.60) inset, 0 2px 2px 0 rgba(255, 255, 255, 0.60) inset, -10px -12px 18px 0 rgba(80, 220, 100, 0.12) inset, 3px 4px 8px 0 rgba(255, 255, 255, 0.70); color: #1B8F1B; text-align: center; font-style: normal; font-weight: 500; line-height: normal; text-transform: capitalize;">
+                    Đăng Nhập
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main
+        class="relative z-10 max-w-[450px] md:max-w-[760px] lg:max-w-[1024px]  mx-auto flex flex-col items-center justify-center flex-1 overflow-hidden mt-2 gap-2 px-3 md:px-0">
+        <!-- Main Title -->
+        <div class="text-center w-full max-w-[280px] md:max-w-[480px] lg:max-w-[550px] xl:max-w-[600px] h-auto mt-2">
+            <img src="./assets/img/header/text.png" alt="" class="w-full h-full object-contain hidden md:block">
+            <img src="./assets/img/header/tietalmb.png" alt="" class="w-full h-full object-contain block md:hidden">
+        </div>
+        <div class="text-center w-full md:max-w-[400px] lg:max-w-[420px] xl:max-w-[450px] h-auto">
+            <img src="./assets/img/header/banerpc1.png" alt="" class="w-full h-full object-contain hidden md:block">
+            <img src="./assets/img/header/banermb.png" alt="" class="w-full h-full object-contain block md:hidden">
+        </div>
+        <div class="lg:w-full h-max max-h-[400px] hidden md:flex items-center justify-between mt-1 xl:mt-3">
+            <div
+                class="w-[25%] lg:w-[22%] lg:max-w-[280px] xl:max-w-[316px] h-max flex flex-col gap-1 items-center justify-center">
+                <img src="./assets/img/feature/pc/naptien.png" alt="Nạp tiền" class="cursor-pointer naptien-btn w-full object-contain">
+                <img src="./assets/img/feature/pc/ruttien.png" alt="Rút tiền" class="cursor-pointer ruttien-btn w-full object-contain">
+                <img src="./assets/img/feature/pc/khuyenmai.png" alt="Khuyến mãi" class="cursor-pointer khuyenmai-btn w-full object-contain">
+            </div>
+            <div class="w-[50%] lg:w-[54%] lg:max-w-[466px] xl:max-w-[500px] h-max flex items-center justify-center">
+                <div class="mockup-background-container w-full h-full">
+                    <!-- Background Animation Container -->
+                    <div class="background-slide bg-overlay-1 active" id="bg1"></div>
+                    <!-- Mockup Image -->
+                    <img src="./assets/img/feature/screennyg.webp?v=1" alt=""
+                        class="pc-mockup-img relative z-10 w-[88%] mx-auto h-auto object-contain">
+                </div>
+            </div>
+            <div
+                class="w-[25%] lg:w-[22%] lg:max-w-[280px] xl:max-w-[316px] h-max flex flex-col gap-1 items-center justify-center">
+                <a href="/" target="_blank">
+                    <img src="./assets/img/feature/pc/telegram.png" alt="Telegram" class="cursor-pointer w-full object-contain">
+                </a>
+                <img src="./assets/img/feature/pc/khieunai.png" alt="Khiếu nại" class="cursor-pointer khieunai-btn w-full object-contain">
+                <img src="./assets/img/feature/pc/tai-khoan.png" alt="Tài khoản" class="cursor-pointer taikhoan-btn w-full object-contain">
+            </div>
+        </div>
+        <div class="w-full h-auto flex md:hidden items-center justify-center mt-2 xl:mt-5">
+            <div class="h-auto flex flex-col gap-1 items-center justify-center w-1/2">
+                <img src="./assets/img/feature/mb/naptien.png" alt="Nạp tiền"
+                    class="w-[99%] h-full object-contain cursor-pointer naptien-btn">
+                <img src="./assets/img/feature/mb/khuyenmai.png" alt="Khuyến mãi"
+                    class="w-[99%] h-full object-contain cursor-pointer khuyenmai-btn">
+                <a href="/" target="_blank" rel="noopener noreferrer">
+                    <img src="./assets/img/feature/mb/telegram.png" alt="Telegram"
+                        class="w-[99%] h-full object-contain cursor-pointer">
+                </a>
+            </div>
+            <div class="h-auto flex flex-col gap-1 items-center justify-center w-1/2">
+                <img src="./assets/img/feature/mb/ruttien.png" alt="Rút tiền"
+                    class="w-[99%] h-full object-contain cursor-pointer ruttien-btn">
+                <img src="./assets/img/feature/mb/tai-khoan.png" alt="Tài khoản"
+                    class="w-[99%] h-full object-contain cursor-pointer taikhoan-btn">
+                <img src="./assets/img/feature/mb/khieunai.png" alt="Khiếu nại"
+                    class="w-[99%] h-full object-contain cursor-pointer khieunai-btn">
+            </div>
+        </div>
+        <div
+            class="w-full max-w-[380px] lg:max-w-[466px] xl:max-w-[536px] h-max md:flex items-center justify-center hidden ">
+            <!-- Ảnh nút tải app, khi click sẽ mở link / ở tab mới -->
+            <img src="./assets/img/app/dlpc2.png" alt="Tải app F8BET" class="cursor-pointer"
+                style="display: inline-block;" onclick="window.open('/', '_blank')">
+        </div>
+    </main>
+    <footer class="px-3 max-w-[450px] md:max-w-[760px] lg:max-w-[1024px] mx-auto">
+        <div class="footer-slider-container relative mx-auto flex items-center justify-center flex items-center justify-between mt-2 md:mt-4 xl:mt-8 px-0 md:px-[50px]
+                    rounded-[30px] border-[2px] border-[#C8F5C8]
+                    bg-[linear-gradient(180deg,rgba(200,255,200,0.30)_0%,rgba(160,240,160,0.30)_100%)]
+                    backdrop-blur-[2px] z-10 overflow-hidden
+                    shadow-[0_9px_10px_0_rgba(40,180,60,0.21)]
+                    ">
+            <!-- Hiệu ứng ánh sáng động phía trên bên trái -->
+            <div class="absolute top-0 left-0 w-1/3 h-1/2 pointer-events-none z-0"
+                style="background: radial-gradient(circle at 30% 20%, rgba(255,255,255,0.35) 0%, transparent 80%); filter: blur(24px);">
+            </div>
+            <!-- Hiệu ứng ánh sáng động phía dưới bên phải -->
+            <div class="absolute bottom-0 right-0 w-1/3 h-1/2 pointer-events-none z-0"
+                style="background: radial-gradient(circle at 70% 80%, rgba(40,200,60,0.10) 0%, transparent 80%); filter: blur(32px);">
+            </div>
+            <!-- Overlay gradient nhẹ để tăng chiều sâu -->
+            <div class="absolute inset-0 pointer-events-none z-0"
+                style="background: linear-gradient(120deg, rgba(255,255,255,0.10) 0%, rgba(160,240,160,0.08) 100%);">
+            </div>
+            <div class="footer-slider">
+                <div class="footer-slide" data-link="/" data-title="F8BET - Góp ý">
+                    <div class="footer-icon-box"><img src="./assets/img/footer/gopy-icon.png" alt="Góp ý"></div>
+                </div>
+                <div class="footer-slide" data-link="/" data-title="F8BET - Đại lý">
+                    <div class="footer-icon-box"><img src="./assets/img/footer/daily-icon.png" alt="Đại lý"></div>
+                </div>
+                <div class="footer-slide" data-link="/"
+                    data-title="F8BET - Youtube">
+                    <div class="footer-icon-box"><img src="./assets/img/footer/youtube-icon.png" alt="Youtube"></div>
+                </div>
+                <div class="footer-slide" data-link="/" data-title="F8BET - Vip">
+                    <div class="footer-icon-box"><img src="./assets/img/footer/clubvip-icon.png" alt="Vip"></div>
+                </div>
+                <div class="footer-slide" data-link="/"
+                    data-title="F8BET - facebook">
+                    <div class="footer-icon-box"><img src="./assets/img/footer/facebook-icon.png" alt="facebook"></div>
+                </div>
+                <div class="footer-slide" data-link="/" data-title="F8BET - Tang code">
+                    <div class="footer-icon-box"><img src="./assets/img/footer/codefree-icon.png" alt="Tang code"></div>
+                </div>
+                <div class="footer-slide" data-link="/" data-title="F8BET - Khuyến mãi">
+                    <div class="footer-icon-box"><img src="./assets/img/footer/khuyenmai-icon.png" alt="Khuyến mãi"></div>
+                </div>
+            </div>
+        </div>
+        <div class="w-full mt-5 flex items-center justify-center md:hidden">
+            <div class="mockup-background-container w-full h-full cursor-pointer"
+                onclick="window.open('/', '_blank')" title="Truy cập /">
+                <!-- Hiệu ứng nền động -->
+                <div class="background-slide bg-overlay-1 active" id="bg1"></div>
+                <!-- Ảnh mockup -->
+                <img src="./assets/img/feature/screennyg.webp" alt="Truy cập /"
+                    class="relative z-10 w-full h-auto object-contain">
+            </div>
+        </div>
+
+
+        <div class="w-full h-auto flex md:hidden items-center justify-center mt-5 mb-10 relative z-50 !z-[9999]"
+            style="background:rgba(255,255,255,0.8);" onclick="window.open('/', '_blank')">
+            <img src="./assets/img/app/dlmb2.png" alt="Tải app DLMB" class="cursor-pointer">
+        </div>
+    </footer>
+
+
+    <!-- Modal Popup cho Nạp tiền -->
+    <div id="naptienModal" class="modal-base fixed inset-0 bg-black bg-opacity-50 z-[99999] hidden">
+        <!-- Mobile: Full size -->
+        <div class="md:hidden bg-white w-full h-full flex flex-col relative">
+            <span class="btn-reload" data-tag-id="#naptienIframe" class="cursor-pointer z-30">
+                <img src="./assets/img/footer/icon-reload.png">
+            </span>
+
+            <!-- Header -->
+            <div class="flex justify-between items-center px-4 py-2 absolute right-[-9px] top-[-2px]">
+                <span id="closeNaptienModal" class="close-button">×</span>
+            </div>
+            <!-- Content -->
+            <div class="flex-1">
+                <iframe id="naptienIframe" src="/" class="w-full h-full border-0 rounded"
+                    title="Nạp tiền"></iframe>
+            </div>
+        </div>
+
+        <!-- Desktop: Fixed position ở góc phải dưới -->
+        <div
+            class="hidden md:block fixed bottom-0 right-0 bg-white rounded-tl-lg shadow-xl w-[400px] max-h-[80vh] flex flex-col  z-[99999]">
+            <span class="btn-reload" data-tag-id="#naptienIframeDesktop" class="cursor-pointer z-30">
+                <img src="./assets/img/footer/icon-reload.png">
+            </span>
+
+            <!-- Header -->
+            <div class="flex justify-between items-center px-4 py-2 border-b border-gray-200 bg-gray-50 rounded-tl-lg">
+                <h3 class="text-lg font-semibold text-gray-800">Nạp tiền</h3>
+                <button id="closeNaptienModalDesktop" class="text-gray-500 hover:text-gray-700 text-2xl font-bold">
+                    &times;
+                </button>
+            </div>
+            <!-- Content -->
+            <div class="flex-1 overflow-hidden">
+                <iframe id="naptienIframeDesktop" src="/"
+                    class="w-full h-auto min-h-[70vh] border-0" title="Nạp tiền"></iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Popup cho Rút tiền -->
+    <div id="ruttienModal" class="modal-base fixed inset-0 bg-black bg-opacity-50 z-[99999] hidden">
+        <!-- Mobile: Full size -->
+        <div class="md:hidden bg-white w-full h-full flex flex-col relative">
+            <span class="btn-reload" data-tag-id="#ruttienIframe" class="cursor-pointer z-30">
+                <img src="./assets/img/footer/icon-reload.png">
+            </span>
+
+            <!-- Header -->
+            <div class="flex justify-between items-center px-4 py-2 absolute right-[-9px] top-[-2px]">
+                <span id="closeRuttienModal" class="close-button">×</span>
+            </div>
+            <!-- Content -->
+            <div class="flex-1">
+                <iframe id="ruttienIframe" src="/" class="w-full h-full border-0 rounded"
+                    title="Rút tiền"></iframe>
+            </div>
+        </div>
+
+        <!-- Desktop: Fixed position ở góc phải dưới -->
+        <div
+            class="hidden md:block fixed bottom-0 right-0 bg-white rounded-tl-lg shadow-xl w-[400px] max-h-[80vh] flex flex-col  z-[99999]">
+            <span class="btn-reload" data-tag-id="#ruttienIframeDesktop" class="cursor-pointer z-30">
+                <img src="./assets/img/footer/icon-reload.png">
+            </span>
+            
+            <!-- Header -->
+            <div class="flex justify-between items-center px-4 py-2 border-b border-gray-200 bg-gray-50 rounded-tl-lg">
+                <h3 class="text-lg font-semibold text-gray-800">Rút tiền</h3>
+                <button id="closeRuttienModalDesktop" class="text-gray-500 hover:text-gray-700 text-2xl font-bold">
+                    &times;
+                </button>
+            </div>
+            <!-- Content -->
+            <div class="flex-1 overflow-hidden">
+                <iframe id="ruttienIframeDesktop" src="/"
+                    class="w-full h-auto min-h-[70vh] border-0" title="Rút tiền"></iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Popup cho Khuyến mãi -->
+    <div id="khuyenmaiModal" class="modal-base fixed inset-0 bg-black bg-opacity-50 z-[99999] hidden">
+        <!-- Mobile: Full size -->
+        <div class="md:hidden bg-white w-full h-full flex flex-col relative">
+            <span class="btn-reload" data-tag-id="#khuyenmaiIframe" class="cursor-pointer z-30">
+                <img src="./assets/img/footer/icon-reload.png">
+            </span>
+            
+            <!-- Header -->
+            <div class="flex justify-between items-center px-4 py-2 absolute right-[-9px] top-[-2px]">
+                <span id="closeKhuyenmaiModal" class="close-button">×</span>
+            </div>
+            <!-- Content -->
+            <div class="flex-1">
+                <iframe id="khuyenmaiIframe" src="/" class="w-full h-full border-0 rounded"
+                    title="Khuyến mãi"></iframe>
+            </div>
+        </div>
+
+        <!-- Desktop: Fixed position ở góc phải dưới -->
+        <div
+            class="hidden md:block fixed bottom-0 right-0 bg-white rounded-tl-lg shadow-xl w-[400px] max-h-[80vh] flex flex-col  z-[99999]">
+            <span class="btn-reload" data-tag-id="#khuyenmaiIframeDesktop" class="cursor-pointer z-30">
+                <img src="./assets/img/footer/icon-reload.png">
+            </span>
+            
+            <!-- Header -->
+            <div class="flex justify-between items-center px-4 py-2 border-b border-gray-200 bg-gray-50 rounded-tl-lg">
+                <h3 class="text-lg font-semibold text-gray-800">Khuyến mãi</h3>
+                <button id="closeKhuyenmaiModalDesktop" class="text-gray-500 hover:text-gray-700 text-2xl font-bold">
+                    &times;
+                </button>
+            </div>
+            <!-- Content -->
+            <div class="flex-1 overflow-hidden">
+                <iframe id="khuyenmaiIframeDesktop" src="/"
+                    class="w-full h-auto min-h-[70vh] border-0" title="Khuyến mãi"></iframe>
+            </div>
+        </div>
+    </div>
+
+    <div id="khieunaiModal" class="modal-base fixed inset-0 bg-black bg-opacity-50 z-[99999] hidden">
+        <!-- Mobile: Full size -->
+        <div class="md:hidden bg-white w-full h-full flex flex-col relative">
+            <span class="btn-reload" data-tag-id="#khieunaiIframe" class="cursor-pointer z-30">
+                <img src="./assets/img/footer/icon-reload.png">
+            </span>
+            
+            <!-- Header -->
+            <div class="flex justify-between items-center px-4 py-2 absolute right-[-9px] top-[-2px]">
+                <span id="closeKhieunaiModal" class="close-button">×</span>
+            </div>
+            <!-- Content -->
+            <div class="flex-1">
+                <iframe id="khieunaiIframe" src="/" class="w-full h-full border-0 rounded"
+                    title="Khiếu nại"></iframe>
+            </div>
+        </div>
+
+        <!-- Desktop: Fixed position ở góc phải dưới -->
+
+        <div
+            class="hidden md:block fixed bottom-0 right-0 bg-white rounded-tl-lg shadow-xl w-[400px] max-h-[80vh] flex flex-col  z-[99999]">
+            <span class="btn-reload" data-tag-id="#khieunaiIframeDesktop" class="cursor-pointer z-30">
+                <img src="./assets/img/footer/icon-reload.png">
+            </span>
+            
+            <!-- Header -->
+            <div class="flex justify-between items-center px-4 py-2 border-b border-gray-200 bg-gray-50 rounded-tl-lg">
+                <h3 class="text-lg font-semibold text-gray-800">Khiếu nại</h3>
+                <button id="closeKhieunaiModalDesktop" class="text-gray-500 hover:text-gray-700 text-2xl font-bold">
+                    &times;
+                </button>
+            </div>
+            <!-- Content -->
+            <div class="flex-1 overflow-hidden">
+                <iframe id="khieunaiIframeDesktop" src="/"
+                    class="w-full h-auto min-h-[70vh] border-0" title="Khiếu nại"></iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Popup cho Tài khoản -->
+    <div id="taikhoanModal" class="modal-base fixed inset-0 bg-black bg-opacity-50 z-[99999] hidden">
+        <!-- Mobile: Full size -->
+        <div class="md:hidden bg-white w-full h-full flex flex-col relative">
+            <span class="btn-reload" data-tag-id="#taikhoanIframe" class="cursor-pointer z-30">
+                <img src="./assets/img/footer/icon-reload.png">
+            </span>
+            
+            <!-- Header -->
+            <div class="flex justify-between items-center px-4 py-2 absolute right-[-9px] top-[-2px]">
+                <span id="closeTaikhoanModal" class="close-button">×</span>
+            </div>
+            <!-- Content -->
+            <div class="flex-1">
+                <iframe id="taikhoanIframe" src="/" class="w-full h-full border-0 rounded"
+                    title="Tài khoản"></iframe>
+            </div>
+        </div>
+
+        <!-- Desktop: Fixed position ở góc phải dưới -->
+        <div
+            class="hidden md:block fixed bottom-0 right-0 bg-white rounded-tl-lg shadow-xl w-[400px] max-h-[80vh] flex flex-col  z-[99999]">
+            <span class="btn-reload" data-tag-id="#taikhoanIframeDesktop" class="cursor-pointer z-30">
+                <img src="./assets/img/footer/icon-reload.png">
+            </span>
+            
+            <!-- Header -->
+            <div class="flex justify-between items-center px-4 py-2 border-b border-gray-200 bg-gray-50 rounded-tl-lg">
+                <h3 class="text-lg font-semibold text-gray-800">Tài khoản</h3>
+                <button id="closeTaikhoanModalDesktop" class="text-gray-500 hover:text-gray-700 text-2xl font-bold">
+                    &times;
+                </button>
+            </div>
+            <!-- Content -->
+            <div class="flex-1 overflow-hidden">
+                <iframe id="taikhoanIframeDesktop" src="/"
+                    class="w-full h-auto min-h-[70vh] border-0" title="Tài khoản"></iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slick Slider JS -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-slider@1.8.1/slick/slick.min.js"></script>
+    <script type="text/javascript" src="script.js"></script>
+    <!-- Modal Manager JavaScript -->
+    <script>
+        class ModalManager {
+            constructor() {
+                this.modals = [
+                    {
+                        btnClass: '.naptien-btn',
+                        modalId: 'naptienModal',
+                        closeMobileId: 'closeNaptienModal',
+                        closeDesktopId: 'closeNaptienModalDesktop',
+                        title: 'Nạp tiền'
+                    },
+                    {
+                        btnClass: '.ruttien-btn',
+                        modalId: 'ruttienModal',
+                        closeMobileId: 'closeRuttienModal',
+                        closeDesktopId: 'closeRuttienModalDesktop',
+                        title: 'Rút tiền'
+                    },
+                    {
+                        btnClass: '.khuyenmai-btn',
+                        modalId: 'khuyenmaiModal',
+                        closeMobileId: 'closeKhuyenmaiModal',
+                        closeDesktopId: 'closeKhuyenmaiModalDesktop',
+                        title: 'Khuyến mãi'
+                    },
+                    {
+                        btnClass: '.khieunai-btn',
+                        modalId: 'khieunaiModal',
+                        closeMobileId: 'closeKhieunaiModal',
+                        closeDesktopId: 'closeKhieunaiModalDesktop',
+                        title: 'Khiếu nại'
+                    },
+                    {
+                        btnClass: '.taikhoan-btn',
+                        modalId: 'taikhoanModal',
+                        closeMobileId: 'closeTaikhoanModal',
+                        closeDesktopId: 'closeTaikhoanModalDesktop',
+                        title: 'Tài khoản'
+                    }
+                ];
+                this.init();
+            }
+
+            closeAll() {
+                this.modals.forEach(config => {
+                    const modal = document.getElementById(config.modalId);
+                    if (modal) {
+                        modal.classList.add('hidden');
+                        modal.style.display = 'none';
+                    }
+                });
+                document.body.style.overflow = 'auto';
+            }
+
+            openModal(modalId) {
+                this.closeAll();
+                const modal = document.getElementById(modalId);
+                if (modal) {
+                    modal.classList.remove('hidden');
+                    modal.style.display = 'block';
+                    if (window.innerWidth < 768) {
+                        document.body.style.overflow = 'hidden';
+                    }
+                }
+            }
+
+            closeModal(modalId) {
+                const modal = document.getElementById(modalId);
+                if (modal) {
+                    modal.classList.add('hidden');
+                    modal.style.display = 'none';
+                    if (window.innerWidth < 768) {
+                        document.body.style.overflow = 'auto';
+                    }
+                }
+            }
+
+            init() {
+                this.modals.forEach(config => {
+                    const btns = document.querySelectorAll(config.btnClass);
+                    const closeMobile = document.getElementById(config.closeMobileId);
+                    const closeDesktop = document.getElementById(config.closeDesktopId);
+
+                    if (!btns.length || !closeMobile || !closeDesktop) {
+                        console.error(`Missing elements for ${config.title} modal`);
+                        return;
+                    }
+
+                    // Open modal - xử lý click cho hình ảnh
+                    const openModalHandler = (e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        console.log(`Nút ${config.title} được click`);
+                        this.openModal(config.modalId);
+                    };
+
+                    // Thêm event listener cho tất cả hình ảnh có class naptien-btn
+                    btns.forEach(btn => {
+                        btn.addEventListener('click', openModalHandler);
+                    });
+
+                    // Close modal
+                    const closeModal = () => this.closeModal(config.modalId);
+                    closeMobile.addEventListener('click', closeModal);
+                    closeDesktop.addEventListener('click', closeModal);
+
+                    // Close on outside click (mobile only)
+                    const modal = document.getElementById(config.modalId);
+                    modal.addEventListener('click', (e) => {
+                        if (e.target === modal && window.innerWidth < 768) {
+                            closeModal();
+                        }
+                    });
+
+                    // Close on ESC
+                    document.addEventListener('keydown', (e) => {
+                        if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+                            closeModal();
+                        }
+                    });
+
+                    console.log(`${config.title} modal handler created successfully`);
+                    console.log(`Found ${btns.length} buttons with class ${config.btnClass}`);
+                });
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initialize modal manager
+            const modalManager = new ModalManager();
+
+            // Handle responsive resize
+            window.addEventListener('resize', () => {
+                if (window.innerWidth >= 768) {
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        });
+    </script>
+
+    <script>
+        $('.btn-reload').on('click', function () {
+            // Get the iframe element using the selector in the data-tag-id attribute
+            var iframeSelector = $(this).data('tag-id');
+            var $iframe = $(iframeSelector); // Now $iframe is the jQuery object of the actual iframe
+            
+            // Get the current src of the iframe
+            var iframeLoading = $iframe.attr('src');
+            
+            // Set the iframe src to empty, and reload it when the iframe loads
+            $iframe.attr('src', '');
+            $iframe.on('load', function () {
+                $('#loading').hide(); // Hide loading indicator
+            }).attr('src', iframeLoading); // Reset src to reload the iframe
+        });
+
+    </script>
+</body>
+
+</html>
