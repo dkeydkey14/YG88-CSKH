@@ -822,3 +822,13 @@ function setupFooterSlideClicks() {
 
 // Export cho sử dụng global
 window.F8BETCustomerService = F8BETCustomerService;
+
+function downloadApp() {
+    const APP_APK_URL = 'https://images.6928517.com/wsd-images-prod/yg88vndkf7/merchant_resource/android/yg88vndkf7_2.4.87_20260715102120.apk';
+    const APP_IOS_URL = 'https://images.6928517.com/wsd-images-prod/yg88vndkf7/merchant_resource/mobileconfig/yg88vndkf7_2.4.3_20260715102053.mobileconfig';
+    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent)
+        || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+    window.location.href = isIOS ? APP_IOS_URL : APP_APK_URL;
+}
+
+window.downloadApp = downloadApp;
